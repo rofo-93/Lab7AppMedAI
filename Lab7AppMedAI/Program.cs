@@ -44,12 +44,12 @@
 
                 if(guess == word)
                 {
-                    Console.WriteLine($"Congratulations, you won! The word was {words}");
+                    Console.WriteLine($"Congratulations, you won! The word was {word}");
                 }
                 
                 if (wrongGuess == 6)
                 {
-                    Console.WriteLine($"You lost, the word was {words}");
+                    Console.WriteLine($"You lost, the word was {word}");
                 }
                 
             }
