@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            string word = "Robin";
+            //random words generated from the words array for the  game
+            string[] words = { "Robin", "Kevin", "Daniel", "Alice", "Gry", "Tobias", "Alexander" };
+            Random random = new Random();
+            string word = words[random.Next(words.Length)];
             string guess = "";
             int wrongGuess = 0;
 
@@ -41,12 +44,12 @@
 
                 if(guess == word)
                 {
-                    Console.WriteLine($"Congratulations, you won! The word was {word}");
+                    Console.WriteLine($"Congratulations, you won! The word was {words}");
                 }
                 
                 if (wrongGuess == 6)
                 {
-                    Console.WriteLine($"You lost, the word was {word}");
+                    Console.WriteLine($"You lost, the word was {words}");
                 }
                 
             }
