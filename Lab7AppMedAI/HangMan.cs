@@ -60,9 +60,9 @@ namespace Lab7AppMedAI
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(" +----+");
-            Console.WriteLine(" |   O");
-            Console.WriteLine(" |  /|\\");
-            Console.WriteLine(" |  / \\");
+            Console.WriteLine(" |    Ø");
+            Console.WriteLine(" |   /|\\");
+            Console.WriteLine(" |   / \\");
             Console.WriteLine("_|_");
             Console.ResetColor();
         }
