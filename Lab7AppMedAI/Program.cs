@@ -7,8 +7,9 @@
             //random words generated from the words array for the  game
             string[] words = { "Robin", "Kevin", "Daniel", "Alice", "Gry", "Tobias", "Alexander" };
             Random random = new Random();
-            string word = words[random.Next(words.Length)];
+            string word = words[random.Next(words.Length)].ToUpper();
 
+            string guessedLetters = "";
             string guess = "";
             int wrongGuess = 0;
             HangMan drawHangman = new HangMan();
@@ -20,11 +21,11 @@
             while(wrongGuess < 6 && guess != word)
             {
                 drawHangman.DrawMan(wrongGuess);
-                foreach (char letter in word)
+                foreach (char letters in word)
                 {
-                    if (guess.Contains(letter))
+                    if (guessedLetters.Contains(letters))
                     {
-                        Console.Write(letter);
+                        Console.Write(letters);
                     }
                     else
                     {
@@ -34,11 +35,31 @@
                 }
                 
                 Console.Write("\nGuess a letter: ");
-                char guessedLetter = Console.ReadLine()[0];
 
-                if (word.Contains(guessedLetter))
+                //with the help of AI removed the need to have the letter be case sensitive
+                //also added logic to check if you already have guessed the same letter, or if you are not typing in a letter
+                string input = Console.ReadLine()?.Trim().ToUpper() ?? "";
+                if (input.Length != 1 || !char.IsLetter(input[0]))
                 {
-                    guess += guessedLetter;
+                    Console.WriteLine("Please enter a letter.");
+                    continue;
+                }
+                
+                char letter = input[0];
+                
+
+                if (guessedLetters.Contains(letter))
+                {
+                    Console.WriteLine("You have already guessed that letter.");
+                    continue;
+                }
+
+                guessedLetters += letter;
+
+
+                if (word.Contains(letter))
+                {
+                    guess += letter;
                     Console.WriteLine("Correct guess!");
                 }
                 else
@@ -47,7 +68,7 @@
                     Console.WriteLine($"Wrong guess. total guesses: {wrongGuess}");
                 }
 
-                if(guess == word)
+                if(guessedLetters == word)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Congratulations, you won! The word was {word}");
