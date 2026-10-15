@@ -68,11 +68,12 @@
                     Console.WriteLine($"Wrong guess. total guesses: {wrongGuess}");
                 }
 
-                if(guessedLetters == word)
+                if(word.All(letter => guessedLetters.Contains(letter)))
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Congratulations, you won! The word was {word}");
                     Console.ResetColor();
+                    break;
                 }
                 
                 if (wrongGuess == 6)
